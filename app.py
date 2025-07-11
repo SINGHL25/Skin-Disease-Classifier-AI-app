@@ -63,5 +63,6 @@ else:
     except Exception as e:
         st.error(f"❌ Error processing image: {e}")
 
-st.markdown("---")
+st.markdown(translate_text("Upload a close-up image of the affected skin area to detect potential conditions.", selected_lang))
+
 st.caption("⚠️ This is an AI demo. For serious skin conditions, consult a certified doctor.")
