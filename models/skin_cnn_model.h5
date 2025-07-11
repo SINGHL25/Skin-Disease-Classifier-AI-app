@@ -1,1 +1,24 @@
+Create a script named generate_model.py:
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+import os
+
+def build_model():
+    model = Sequential([
+        Conv2D(16, (3, 3), activation='relu', input_shape=(224, 224, 3)),
+        MaxPooling2D(2, 2),
+        Conv2D(32, (3, 3), activation='relu'),
+        MaxPooling2D(2, 2),
+        Flatten(),
+        Dense(64, activation='relu'),
+        Dense(5, activation='softmax')  # 5 classes
+    ])
+    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+    return model
+
+os.makedirs("models", exist_ok=True)
+model = build_model()
+model.save("models/skin_cnn_model.h5")
+print("✅ Simulated model saved to models/skin_cnn_model.h5")
 
